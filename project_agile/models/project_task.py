@@ -338,16 +338,20 @@ class Task(models.Model):
         default=lambda self: self.env["project.task.type2"].search(
             [("is_default_type", "=", True)], limit=1
         ),
+        track_visibility='onchange',
     )
+
     agile_order = fields.Float(
-        required=False, default=_default_agile_order, lira=True
+        required=False, default=_default_agile_order
     )
-    agile_enabled = fields.Boolean(related="project_id.agile_enabled",)
+
+    agile_enabled = fields.Boolean(related="project_id.agile_enabled", track_visibility='onchange', )
 
     resolution_id = fields.Many2one(
         comodel_name="project.task.resolution",
         string="Resolution",
         index=True,
+        track_visibility='onchange',
     )
 
     allow_story_points = fields.Boolean(
@@ -398,7 +402,7 @@ class Task(models.Model):
         comodel_name="project.agile.team", string="Committed team",
     )
 
-    parent_id = fields.Many2one('project.task')
+    parent_id = fields.Many2one('project.task', track_visibility='onchange')
 
     type_ids = fields.Many2many(
         comodel_name="project.task.type2",
@@ -425,9 +429,10 @@ class Task(models.Model):
         default=lambda self: self.env["project.task.priority"].search(
             [("is_default_priority", "=", True)], limit=1
         ),
+        track_visibility='onchange',
     )
 
-    story_points = fields.Integer(string="Story points", default=0)
+    story_points = fields.Integer(string="Story points", default=0, track_visibility='onchange')
 
     doc_count = fields.Integer(
         compute="_compute_doc_count", string="Number of documents attached"
