@@ -166,7 +166,8 @@ odoo.define('scrummer.view.task', function (require) {
         },
         scrollAndHighlight(widget) {
             widget._is_added_to_DOM.then(() => {
-                $("#middle-content").scrollToElement(widget.$el);
+                // TODO enable scroll when fix the problems
+                // $("#middle-content").scrollToElement(widget.$el);
                 widget.$el.highlight();
             })
         },
@@ -201,7 +202,8 @@ odoo.define('scrummer.view.task', function (require) {
         },
         _onOpenInProject() {
             var newUrl = "http://" + window.location.host + "/web?#id=" + this.taskId + "&model=project.task&view_type=form";
-            window.location.href = newUrl;
+            // window.location.href = newUrl;
+            window.open(newUrl, '_blank').focus();
         },
         _onAssignToMeClick() {
             this.taskWidget._model.user_id = data.session.uid;

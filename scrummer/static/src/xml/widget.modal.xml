@@ -77,7 +77,7 @@
                     <input value="" id="task_id" hidden="true"/>
                     <div class="input-field col s12">
                       <input value="" id="user_name" type="text" readonly="1"/>
-                      <label for="user_name">Assignee</label>
+                      <label for="user_name">Actual assigned</label>
                     </div>
                     <div class="input-field col s12">
                       <input value="" name="stage_id" id="stage_id" type="text" class="validate" hidden="1" />

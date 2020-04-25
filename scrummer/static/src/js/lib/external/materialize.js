@@ -1017,72 +1017,87 @@ jQuery.Velocity ? console.log("Velocity is already loaded. You may be needlessly
                         l = E
                     } else if ("start" === A) {
                         var E;
-                        i(o).tweensContainer && i(o).isAnimating === !0 && (E = i(o).tweensContainer), f.each(y, function (e, t) {
-                            if (RegExp("^" + S.Lists.colors.join("$|^") + "$").test(e)) {
-                                var r = p(t, !0), n = r[0], o = r[1], i = r[2];
-                                if (S.RegEx.isHex.test(n)) {
-                                    for (var s = ["Red", "Green", "Blue"], l = S.Values.hexToRgb(n), u = i ? S.Values.hexToRgb(i) : a, c = 0; c < s.length; c++) {
-                                        var f = [l[c]];
-                                        o && f.push(o), u !== a && f.push(u[c]), y[e + s[c]] = f
+                        try {
+                            i(o).tweensContainer && i(o).isAnimating === !0 && (E = i(o).tweensContainer), f.each(y, function (e, t) {
+                                if (RegExp("^" + S.Lists.colors.join("$|^") + "$").test(e)) {
+                                    var r = p(t, !0), n = r[0], o = r[1], i = r[2];
+                                    if (S.RegEx.isHex.test(n)) {
+                                        for (var s = ["Red", "Green", "Blue"], l = S.Values.hexToRgb(n), u = i ? S.Values.hexToRgb(i) : a, c = 0; c < s.length; c++) {
+                                            var f = [l[c]];
+                                            o && f.push(o), u !== a && f.push(u[c]), y[e + s[c]] = f
+                                        }
+                                        delete y[e]
                                     }
-                                    delete y[e]
                                 }
-                            }
-                        });
+                            });
+
+                        } catch (e) {
+                            console.error(e);
+                            console.info(i);
+                            console.info(o);
+                            return;
+                        }
                         for (var z in y) {
                             var O = p(y[z]), q = O[0], $ = O[1], M = O[2];
                             z = S.Names.camelCase(z);
                             var I = S.Hooks.getRoot(z), B = !1;
-                            if (i(o).isSVG || "tween" === I || S.Names.prefixCheck(I)[1] !== !1 || S.Normalizations.registered[I] !== a) {
-                                (s.display !== a && null !== s.display && "none" !== s.display || s.visibility !== a && "hidden" !== s.visibility) && /opacity|filter/.test(z) && !M && 0 !== q && (M = 0), s._cacheValues && E && E[z] ? (M === a && (M = E[z].endValue + E[z].unitType), B = i(o).rootPropertyValueCache[I]) : S.Hooks.registered[z] ? M === a ? (B = S.getPropertyValue(o, I), M = S.getPropertyValue(o, z, B)) : B = S.Hooks.templates[I][1] : M === a && (M = S.getPropertyValue(o, z));
-                                var W, G, Y, D = !1;
-                                if (W = d(z, M), M = W[0], Y = W[1], W = d(z, q), q = W[0].replace(/^([+-\/*])=/, function (e, t) {
+                            try {
+                                if (i(o).isSVG || "tween" === I || S.Names.prefixCheck(I)[1] !== !1 || S.Normalizations.registered[I] !== a) {
+                                    (s.display !== a && null !== s.display && "none" !== s.display || s.visibility !== a && "hidden" !== s.visibility) && /opacity|filter/.test(z) && !M && 0 !== q && (M = 0), s._cacheValues && E && E[z] ? (M === a && (M = E[z].endValue + E[z].unitType), B = i(o).rootPropertyValueCache[I]) : S.Hooks.registered[z] ? M === a ? (B = S.getPropertyValue(o, I), M = S.getPropertyValue(o, z, B)) : B = S.Hooks.templates[I][1] : M === a && (M = S.getPropertyValue(o, z));
+                                    var W, G, Y, D = !1;
+                                    if (W = d(z, M), M = W[0], Y = W[1], W = d(z, q), q = W[0].replace(/^([+-\/*])=/, function (e, t) {
                                         return D = t, ""
-                                    }), G = W[1], M = parseFloat(M) || 0, q = parseFloat(q) || 0, "%" === G && (/^(fontSize|lineHeight)$/.test(z) ? (q /= 100, G = "em") : /^scale/.test(z) ? (q /= 100, G = "") : /(Red|Green|Blue)$/i.test(z) && (q = q / 100 * 255, G = "")), /[\/*]/.test(D)) G = Y; else if (Y !== G && 0 !== M)if (0 === q) G = Y; else {
-                                    n = n || h();
-                                    var Q = /margin|padding|left|right|width|text|word|letter/i.test(z) || /X$/.test(z) || "x" === z ? "x" : "y";
-                                    switch (Y) {
-                                        case"%":
-                                            M *= "x" === Q ? n.percentToPxWidth : n.percentToPxHeight;
-                                            break;
-                                        case"px":
-                                            break;
-                                        default:
-                                            M *= n[Y + "ToPx"]
+                                    }), G = W[1], M = parseFloat(M) || 0, q = parseFloat(q) || 0, "%" === G && (/^(fontSize|lineHeight)$/.test(z) ? (q /= 100, G = "em") : /^scale/.test(z) ? (q /= 100, G = "") : /(Red|Green|Blue)$/i.test(z) && (q = q / 100 * 255, G = "")), /[\/*]/.test(D)) G = Y; else if (Y !== G && 0 !== M) if (0 === q) G = Y; else {
+                                        n = n || h();
+                                        var Q = /margin|padding|left|right|width|text|word|letter/i.test(z) || /X$/.test(z) || "x" === z ? "x" : "y";
+                                        switch (Y) {
+                                            case"%":
+                                                M *= "x" === Q ? n.percentToPxWidth : n.percentToPxHeight;
+                                                break;
+                                            case"px":
+                                                break;
+                                            default:
+                                                M *= n[Y + "ToPx"]
+                                        }
+                                        switch (G) {
+                                            case"%":
+                                                M *= 1 / ("x" === Q ? n.percentToPxWidth : n.percentToPxHeight);
+                                                break;
+                                            case"px":
+                                                break;
+                                            default:
+                                                M *= 1 / n[G + "ToPx"]
+                                        }
                                     }
-                                    switch (G) {
-                                        case"%":
-                                            M *= 1 / ("x" === Q ? n.percentToPxWidth : n.percentToPxHeight);
+                                    switch (D) {
+                                        case"+":
+                                            q = M + q;
                                             break;
-                                        case"px":
+                                        case"-":
+                                            q = M - q;
                                             break;
-                                        default:
-                                            M *= 1 / n[G + "ToPx"]
+                                        case"*":
+                                            q = M * q;
+                                            break;
+                                        case"/":
+                                            q = M / q
                                     }
-                                }
-                                switch (D) {
-                                    case"+":
-                                        q = M + q;
-                                        break;
-                                    case"-":
-                                        q = M - q;
-                                        break;
-                                    case"*":
-                                        q = M * q;
-                                        break;
-                                    case"/":
-                                        q = M / q
-                                }
-                                l[z] = {
-                                    rootPropertyValue: B,
-                                    startValue: M,
-                                    currentValue: M,
-                                    endValue: q,
-                                    unitType: G,
-                                    easing: $
-                                }, b.debug && console.log("tweensContainer (" + z + "): " + JSON.stringify(l[z]), o)
-                            } else b.debug && console.log("Skipping [" + I + "] due to a lack of browser support.")
-                        }
+                                    l[z] = {
+                                        rootPropertyValue: B,
+                                        startValue: M,
+                                        currentValue: M,
+                                        endValue: q,
+                                        unitType: G,
+                                        easing: $
+                                    }, b.debug && console.log("tweensContainer (" + z + "): " + JSON.stringify(l[z]), o)
+                                } else b.debug && console.log("Skipping [" + I + "] due to a lack of browser support.")
+                            } catch (e) {
+                                console.error(e);
+                                console.info(i);
+                                console.info(o);
+                                return;
+                            }
+                            }
                         l.element = o
                     }
                     l.element && (S.Values.addClass(o, "velocity-animating"), R.push(l), "" === s.queue && (i(o).tweensContainer = l, i(o).opts = s), i(o).isAnimating = !0, V === w - 1 ? (b.State.calls.push([R, g, s, null, k.resolver]), b.State.isTicking === !1 && (b.State.isTicking = !0, c())) : V++)

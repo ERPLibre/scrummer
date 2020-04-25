@@ -307,12 +307,29 @@ odoo.define('scrummer.widget.modal', function (require) {
                       name: this.parent.project_id[1]
                   } : undefined
             });
+
+            this.projectMany2one.insertBefore(this.$("select[name='type_id']").closest(".input-field"));
+
+            this.assignedUserMany2one = new Many2One(this, {
+                label: _t("Assigned to"),
+                model: "res.users",
+                field_name: "user_id",
+                default: this.edit && this.edit.user_id ? {
+                    id: this.edit.user_id[0],
+                    name: this.edit.user_id[1]
+                } : undefined,
+                domain: data.cache.get("current_user").then(user => {
+                    return [
+                        ["team_id", "in", [user.team_id[0]]],
+                    ]
+                }),
+            });
             // console.debug(this.parent);
             // console.debug(this.edit);
             // console.debug(this.defaults);
             // console.debug(this.defaults.project);
 
-            this.projectMany2one.insertBefore(this.$("select[name='type_id']").closest(".input-field"));
+            this.assignedUserMany2one.insertBefore(this.$("select[name='type_id']").closest(".input-field"));
             let tagsOptions = {
                 comodel: "project.tags",
             };
@@ -543,6 +560,7 @@ odoo.define('scrummer.widget.modal', function (require) {
             this._require_prop("stageId");
             this._require_prop("stageName");
             this._require_prop("userName");
+            this._require_prop("userId");
 
             // It is possible that the task is unassigned.
             // Q: Should we automatically assign task to the current user when changing state if there is no user defined on task?
@@ -562,6 +580,23 @@ odoo.define('scrummer.widget.modal', function (require) {
                 field_name: "resolution_id",
             });
             this.resolutionMany2one.insertAfter(this.$("input[name='stage_id']").closest(".input-field"));
+
+            this.assignedUserMany2one = new Many2One(this, {
+                label: _t("Assigned to"),
+                model: "res.users",
+                field_name: "user_id",
+                default: this.userId ? {
+                    id: this.userId[0],
+                    name: this.userId[1]
+                } : undefined,
+                domain: data.cache.get("current_user").then(user => {
+                    return [
+                        ["team_id", "in", [user.team_id[0]]],
+                    ]
+                }),
+            });
+
+            this.assignedUserMany2one.insertBefore(this.$("input[name='stage_id']").closest(".input-field"));
         },
 
         prepareData(confirmation) {
@@ -575,7 +610,8 @@ odoo.define('scrummer.widget.modal', function (require) {
             let payload = {
                 "values": {
                     stage_id: confirmation.stage_id,
-                    resolution_id: confirmation.resolution_id
+                    resolution_id: confirmation.resolution_id,
+                    user_id: confirmation.user_id,
                 },
                 "message": confirmation.message,
                 "log_message": confirmation.log_message,
@@ -589,6 +625,7 @@ odoo.define('scrummer.widget.modal', function (require) {
             this.$("#stage_id").val(this.stageId);
             this.$("#stage_name").val(this.stageName);
             this.$("#user_name").val(this.userName);
+            this.$("#user_id").val(this.userId);
 
             return this._super();
         }

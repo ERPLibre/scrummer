@@ -306,6 +306,8 @@
                        domain="[('project_type_ids', '=', project_type_id)]"
                        context="{'parent_task_id': parent_id}"/>
 
+                <field name="epic_id"/>
+
                 <field name="priority_id" domain="[('type_ids', '=', type_id)]"/>
 
                 <field name="type_ids" invisible="1" readonly="1"/>
@@ -476,6 +478,26 @@
              <filter name="unassigned" position="after">
                 <filter string="Exclude Sub-Tasks" name="sub-tasks" domain="[('parent_id', '!=', False)]"/>
             </filter>
+        </field>
+    </record>
+
+    <!-- Simplify project task -->
+    <record id="quick_create_task_form" model="ir.ui.view">
+        <field name="name">project.task.form.quick_create</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.quick_create_task_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="project_id" invisible="1"/>
+                <field name="parent_id" domain="[('project_id', '=', project_id)]" string="Parent"/>
+                <field name="type_id" domain="[('project_type_ids', 'in', (1))]" options="{'no_open': True,'no_create': True}"/>
+                <field name="epic_id"/>
+            </field>
+            <field name="user_id" position="after">
+                <field name="priority_id" domain="[('type_ids', '=', type_id)]" options="{'no_open': True,'no_create': True}"/>
+                <field name="story_points"/>
+                <field name="description"/>
+            </field>
         </field>
     </record>
 </odoo>

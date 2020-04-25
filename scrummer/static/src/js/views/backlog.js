@@ -267,7 +267,8 @@ odoo.define('scrummer.view.backlog', function (require) {
                 }
                 this.taskWidgetItemMap.has(task.id) || this.taskWidgetItemMap.set(task.id, taskWidget);
                 highlight && taskWidget._is_added_to_DOM.then(() => {
-                    $("#backlog-view").scrollToElement(taskWidget.$el);
+                    // TODO enable scroll when fix the problems
+                    // $("#backlog-view").scrollToElement(taskWidget.$el);
                     taskWidget.$el.highlight();
                 });
                 if (syncerMeta) {
@@ -573,7 +574,8 @@ odoo.define('scrummer.view.backlog', function (require) {
         },
         _onOpenInProject() {
             var newUrl = "http://" + window.location.host + "/web?#id=" + this.record.id + "&model=project.task&view_type=form";
-            window.location.href = newUrl;
+            // window.location.href = newUrl;
+            window.open(newUrl, '_blank').focus();
         },
         _onAssignToMeClick() {
             this.record.user_id = data.session.uid;

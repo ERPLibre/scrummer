@@ -392,7 +392,8 @@ odoo.define('scrummer.view.kanban_table', function (require) {
         },
         _onOpenInProject() {
             var newUrl = "http://" + window.location.host + "/web?#id=" + this.task.id + "&model=project.task&view_type=form";
-            window.location.href = newUrl;
+            // window.location.href = newUrl;
+            window.open(newUrl, '_blank').focus();
         },
         _onAssignToMeClick() {
             this.task.user_id = data.session.uid;
@@ -561,6 +562,14 @@ odoo.define('scrummer.view.kanban_table', function (require) {
                 let column = this.data.sorted_columns.find(col => {
                     return status.column_id == col.id;
                 });
+
+                if (state === undefined) {
+                    console.error("State is undefined. CHeck status state_id and all states");
+                    console.debug(status_id);
+                    console.debug(this.data.workflow.states);
+                    console.debug(this.data);
+                    continue;
+                }
 
                 state.global_in && this.data.workflow.global_states.in.push(state);
                 state.global_out && this.data.workflow.global_states.out.push(state);
@@ -849,6 +858,7 @@ odoo.define('scrummer.view.kanban_table', function (require) {
                 stageId: newStageId,
                 stageName: state.name,
                 userName: cardWidget.record.user_id ? cardWidget.record.user_id[1] : _t("Unassigned"),
+                userId: cardWidget.record.user_id,
                 afterHook: (confirmation, form, result) => {
                     confirmedCallback(result);
                 }
@@ -904,7 +914,8 @@ odoo.define('scrummer.view.kanban_table', function (require) {
 
                                 if (syncerMeta.indirect === false) {
                                     cardWidget._is_added_to_DOM.then(() => {
-                                        node.scrollToElement(cardWidget.$el);
+                                        // TODO enable scroll when fix the problems
+                                        // node.scrollToElement(cardWidget.$el);
                                         highlight && cardWidget.$el.highlight();
                                     });
                                 }
