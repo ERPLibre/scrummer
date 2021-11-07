@@ -204,6 +204,13 @@ require('web_diagram.DiagramRenderer').include({
 
             gray: "#DCDCDC",
             white: "#FFF",
+            black: "#000",
+            blue: "#3D85C7",
+            yellow: "#FFBB41",
+            green: "#6AA74E",
+            red: "#E06664",
+            orange: "#E69037",
+            purple: "#A44D78",
 
             viewport_margin: 50
         };
