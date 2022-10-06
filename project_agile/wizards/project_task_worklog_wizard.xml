@@ -32,7 +32,7 @@
                         <field name="name" nolabel="1"/>
                     </group>
                     <footer>
-                        <button string="_Sumbit" name="button_submit_worklog" type="object" class="btn-primary"/>
+                        <button string="_Submit" name="button_submit_worklog" type="object" class="btn-primary"/>
                         <button string="Cancel" class="btn-default" special="cancel"/>
                     </footer>
                 </sheet>
