@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="project_workflow_design"
+        name="Project Workflow Design"
+        sequence="20"
+        web_icon="project_workflow_design,static/description/icon.png"
+    />
+
+    <menuitem id="menu" name="Menu" sequence="1" parent="project_workflow_design" />
+
+    <menuitem
+        id="workflow_design"
+        name="Workflow design"
+        action="project_workflow_design_workflow_design_action_window"
+        sequence="1"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_faiblesse"
+        name="Workflow design faiblesse"
+        action="project_workflow_design_faiblesse_workflow_design_faiblesse_action_window"
+        sequence="2"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_force"
+        name="Workflow design force"
+        action="project_workflow_design_force_workflow_design_force_action_window"
+        sequence="3"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_menace"
+        name="Workflow design menace"
+        action="project_workflow_design_menace_workflow_design_menace_action_window"
+        sequence="4"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_objectif"
+        name="Workflow design objectif"
+        action="project_workflow_design_objectif_workflow_design_objectif_action_window"
+        sequence="5"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_opportunite"
+        name="Workflow design opportunite"
+        action="project_workflow_design_opportunite_workflow_design_opportunite_action_window"
+        sequence="6"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_volet"
+        name="Workflow design volet"
+        action="project_workflow_design_volet_workflow_design_volet_action_window"
+        sequence="7"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_volet_box"
+        name="Workflow design volet box"
+        action="project_workflow_design_volet_box_workflow_design_volet_box_action_window"
+        sequence="8"
+        parent="menu"
+    />
+
+    <menuitem
+        id="workflow_design_volet_liaison"
+        name="Workflow design volet liaison"
+        action="project_workflow_design_volet_liaison_workflow_design_volet_liaison_action_window"
+        sequence="9"
+        parent="menu"
+    />
+</odoo>

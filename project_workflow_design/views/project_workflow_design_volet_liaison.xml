@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_workflow_design_volet_liaison_view_form" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_liaison_form</field>
+        <field name="model">project.workflow.design.volet.liaison</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="volet_box_dst" />
+                    </group>
+                    <group>
+                        <field name="volet_box_src" />
+                    </group>
+                    <group>
+                        <field name="volet_id" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_liaison_view_graph" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_liaison_graph</field>
+        <field name="model">project.workflow.design.volet.liaison</field>
+        <field name="arch" type="xml">
+            <graph string="Project workflow design volet liaison">
+                <field name="name" type="row" />
+                <field name="volet_box_dst" type="row" />
+                <field name="volet_box_src" type="row" />
+                <field name="volet_id" type="row" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_liaison_view_kanban" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_liaison_kanban</field>
+        <field name="model">project.workflow.design.volet.liaison</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <field name="volet_box_dst" />
+                <field name="volet_box_src" />
+                <field name="volet_id" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="volet_box_dst" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="volet_box_src" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="volet_id" />
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_liaison_view_pivot" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_liaison_pivot</field>
+        <field name="model">project.workflow.design.volet.liaison</field>
+        <field name="arch" type="xml">
+            <pivot string="Project workflow design volet liaison">
+                <field name="name" type="row" />
+                <field name="volet_box_dst" type="row" />
+                <field name="volet_box_src" type="row" />
+                <field name="volet_id" type="row" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_liaison_view_search" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_liaison_search</field>
+        <field name="model">project.workflow.design.volet.liaison</field>
+        <field name="arch" type="xml">
+            <search string="Project workflow design volet liaison">
+                <filter name="name" string="Name" domain="[('name','!=',False)]" />
+                <filter name="volet_box_dst" string="Volet box dst" domain="[('volet_box_dst','!=',False)]" />
+                <filter name="volet_box_src" string="Volet box src" domain="[('volet_box_src','!=',False)]" />
+                <filter name="volet_id" string="Volet" domain="[('volet_id','!=',False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_liaison_view_tree" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_liaison_tree</field>
+        <field name="model">project.workflow.design.volet.liaison</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="volet_box_dst" />
+                <field name="volet_box_src" />
+                <field name="volet_id" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="project_workflow_design_volet_liaison_workflow_design_volet_liaison_action_window"
+        name="Workflow design volet liaison"
+        res_model="project.workflow.design.volet.liaison"
+        view_mode="kanban,pivot,list,graph,form,activity"
+    />
+</odoo>

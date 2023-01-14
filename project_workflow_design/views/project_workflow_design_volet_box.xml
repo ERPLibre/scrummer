@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_workflow_design_volet_box_view_form" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_box_form</field>
+        <field name="model">project.workflow.design.volet.box</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="volet_box_dst" />
+                    </group>
+                    <group>
+                        <field name="volet_box_src" />
+                    </group>
+                    <group>
+                        <field name="description" />
+                    </group>
+                    <group>
+                        <field name="select_color" />
+                    </group>
+                    <group>
+                        <field name="xpos" />
+                    </group>
+                    <group>
+                        <field name="ypos" />
+                    </group>
+                    <group>
+                        <field name="volet_id" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_box_view_graph" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_box_graph</field>
+        <field name="model">project.workflow.design.volet.box</field>
+        <field name="arch" type="xml">
+            <graph string="Project workflow design volet box">
+                <field name="name" type="row" />
+                <field name="description" type="row" />
+                <field name="volet_id" type="row" />
+                <field name="select_color" type="row" />
+                <field name="xpos" type="measure" />
+                <field name="ypos" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_box_view_kanban" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_box_kanban</field>
+        <field name="model">project.workflow.design.volet.box</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <field name="description" />
+                <field name="volet_id" />
+                <field name="select_color" />
+                <field name="xpos" />
+                <field name="ypos" />
+                <field name="volet_box_dst" />
+                <field name="volet_box_src" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="description" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="volet_id" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="select_color" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="xpos" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="ypos" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="volet_box_dst" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="volet_box_src" />
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_box_view_pivot" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_box_pivot</field>
+        <field name="model">project.workflow.design.volet.box</field>
+        <field name="arch" type="xml">
+            <pivot string="Project workflow design volet box">
+                <field name="name" type="row" />
+                <field name="description" type="row" />
+                <field name="volet_id" type="row" />
+                <field name="select_color" type="row" />
+                <field name="xpos" type="measure" />
+                <field name="ypos" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_box_view_search" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_box_search</field>
+        <field name="model">project.workflow.design.volet.box</field>
+        <field name="arch" type="xml">
+            <search string="Project workflow design volet box">
+                <filter name="name" string="Nom" domain="[('name','!=',False)]" />
+                <filter name="description" string="Description" domain="[('description','!=',False)]" />
+                <filter name="volet_id" string="Volet" domain="[('volet_id','!=',False)]" />
+                <filter name="select_color" string="Couleur" domain="[('select_color','!=',False)]" />
+                <filter name="xpos" string="Diagram position x" domain="[('xpos','!=',False)]" />
+                <filter name="ypos" string="Diagram position y" domain="[('ypos','!=',False)]" />
+                <filter name="volet_box_dst" string="Volet box dst" domain="[('volet_box_dst','!=',False)]" />
+                <filter name="volet_box_src" string="Volet box src" domain="[('volet_box_src','!=',False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_volet_box_view_tree" model="ir.ui.view">
+        <field name="name">project_workflow_design_volet_box_tree</field>
+        <field name="model">project.workflow.design.volet.box</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="description" />
+                <field name="volet_box_dst" />
+                <field name="volet_box_src" />
+                <field name="select_color" />
+                <field name="xpos" />
+                <field name="ypos" />
+                <field name="volet_id" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="project_workflow_design_volet_box_workflow_design_volet_box_action_window"
+        name="Workflow design volet box"
+        res_model="project.workflow.design.volet.box"
+        view_mode="kanban,pivot,list,graph,form,activity"
+    />
+</odoo>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_workflow_design_objectif_view_form" model="ir.ui.view">
+        <field name="name">project_workflow_design_objectif_form</field>
+        <field name="model">project.workflow.design.objectif</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="description" />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="sequence" />
+                        </group>
+                        <group>
+                            <field name="project_workflow_design" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_objectif_view_graph" model="ir.ui.view">
+        <field name="name">project_workflow_design_objectif_graph</field>
+        <field name="model">project.workflow.design.objectif</field>
+        <field name="arch" type="xml">
+            <graph string="Project workflow design objectif">
+                <field name="name" type="row" />
+                <field name="description" type="row" />
+                <field name="project_workflow_design" type="row" />
+                <field name="sequence" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_objectif_view_kanban" model="ir.ui.view">
+        <field name="name">project_workflow_design_objectif_kanban</field>
+        <field name="model">project.workflow.design.objectif</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <field name="description" />
+                <field name="project_workflow_design" />
+                <field name="sequence" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="description" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="project_workflow_design" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="sequence" />
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_objectif_view_pivot" model="ir.ui.view">
+        <field name="name">project_workflow_design_objectif_pivot</field>
+        <field name="model">project.workflow.design.objectif</field>
+        <field name="arch" type="xml">
+            <pivot string="Project workflow design objectif">
+                <field name="name" type="row" />
+                <field name="description" type="row" />
+                <field name="project_workflow_design" type="row" />
+                <field name="sequence" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_objectif_view_search" model="ir.ui.view">
+        <field name="name">project_workflow_design_objectif_search</field>
+        <field name="model">project.workflow.design.objectif</field>
+        <field name="arch" type="xml">
+            <search string="Project workflow design objectif">
+                <filter name="name" string="Objectif" domain="[('name','!=',False)]" />
+                <filter name="description" string="Description" domain="[('description','!=',False)]" />
+                <filter
+                    name="project_workflow_design"
+                    string="Project Workflow Design"
+                    domain="[('project_workflow_design','!=',False)]"
+                />
+                <filter name="sequence" string="S&#233;quence" domain="[('sequence','!=',False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_workflow_design_objectif_view_tree" model="ir.ui.view">
+        <field name="name">project_workflow_design_objectif_tree</field>
+        <field name="model">project.workflow.design.objectif</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="description" />
+                <field name="sequence" />
+                <field name="project_workflow_design" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="project_workflow_design_objectif_workflow_design_objectif_action_window"
+        name="Workflow design objectif"
+        res_model="project.workflow.design.objectif"
+        view_mode="kanban,pivot,list,graph,form,activity"
+    />
+</odoo>
