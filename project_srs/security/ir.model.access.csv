@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+project_srs_access_user_types_/_internal_user,project_srs Access User types / Internal User,model_project_srs,base.group_user,1,1,1,1
+project_srs_analyse_non_fonctionnelle_access_user_types_/_internal_user,project_srs_analyse_non_fonctionnelle Access User types / Internal User,model_project_srs_analyse_non_fonctionnelle,base.group_user,1,1,1,1
+project_srs_exigence_fonctionnelle_access_user_types_/_internal_user,project_srs_exigence_fonctionnelle Access User types / Internal User,model_project_srs_exigence_fonctionnelle,base.group_user,1,1,1,1
+project_srs_exigence_fonctionnelle_categorie_access_user_types_/_internal_user,project_srs_exigence_fonctionnelle_categorie Access User types / Internal User,model_project_srs_exigence_fonctionnelle_categorie,base.group_user,1,1,1,1
+project_srs_exigence_fonctionnelle_composante_access_user_types_/_internal_user,project_srs_exigence_fonctionnelle_composante Access User types / Internal User,model_project_srs_exigence_fonctionnelle_composante,base.group_user,1,1,1,1
+project_srs_exigence_non_fonctionnelle_access_user_types_/_internal_user,project_srs_exigence_non_fonctionnelle Access User types / Internal User,model_project_srs_exigence_non_fonctionnelle,base.group_user,1,1,1,1
+project_srs_fct_contrainte_access_user_types_/_internal_user,project_srs_fct_contrainte Access User types / Internal User,model_project_srs_fct_contrainte,base.group_user,1,1,1,1
+project_srs_role_access_user_types_/_internal_user,project_srs_role Access User types / Internal User,model_project_srs_role,base.group_user,1,1,1,1

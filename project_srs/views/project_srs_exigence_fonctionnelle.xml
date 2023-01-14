@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_srs_exigence_fonctionnelle_view_form" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_form</field>
+        <field name="model">project.srs.exigence_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" />
+                        </button>
+                    </div>
+                    <group>
+                        <field name="etat" />
+                    </group>
+                    <group>
+                        <field name="identifiant" />
+                    </group>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="importance" />
+                    </group>
+                    <group>
+                        <field name="categorie" />
+                    </group>
+                    <group>
+                        <field name="composante" widget="many2many_tags" options="{'no_create': True}" />
+                    </group>
+                    <group>
+                        <field name="note" />
+                    </group>
+                    <group>
+                        <field name="feature_url" />
+                    </group>
+                    <group>
+                        <field name="srs_depend" widget="many2many_tags" options="{'no_create': True}" />
+                    </group>
+                    <group>
+                        <field name="srs_depended" widget="many2many_tags" options="{'no_create': True}" />
+                    </group>
+                    <group>
+                        <field name="srs_relate" widget="many2many_tags" options="{'no_create': True}" />
+                    </group>
+                    <group>
+                        <field name="srs_related" widget="many2many_tags" options="{'no_create': True}" />
+                    </group>
+                    <group>
+                        <field name="srs" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_view_graph" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_graph</field>
+        <field name="model">project.srs.exigence_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <graph string="Project srs exigence fonctionnelle">
+                <field name="categorie" type="row" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_view_kanban" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_kanban</field>
+        <field name="model">project.srs.exigence_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="nom_complet" />
+                <field name="categorie" />
+                <field name="composante" widget="many2many_tags" />
+                <field name="etat" />
+                <field name="feature_url" widget="link_button" />
+                <field name="importance" />
+                <field name="note" />
+                <field name="srs" />
+                <field name="srs_depend" widget="many2many_tags" />
+                <field name="srs_depended" widget="many2many_tags" />
+                <field name="srs_relate" widget="many2many_tags" />
+                <field name="srs_related" widget="many2many_tags" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="nom_complet" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="categorie" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="composante" widget="many2many_tags" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="etat" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="feature_url" widget="link_button" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="importance" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="note" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="srs" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="srs_depend" widget="many2many_tags" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="srs_depended" widget="many2many_tags" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="srs_relate" widget="many2many_tags" />
+                                    </li>
+                                    <li class="mb4">
+                                        <field name="srs_related" widget="many2many_tags" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_view_pivot" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_pivot</field>
+        <field name="model">project.srs.exigence_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <pivot string="Project srs exigence fonctionnelle">
+                <field name="nom_complet" type="row" />
+                <field name="categorie" type="col" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_view_search" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_search</field>
+        <field name="model">project.srs.exigence_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <search string="Project srs exigence fonctionnelle">
+                <filter name="name" string="Exigence" domain="[('name','!=',False)]" />
+                <filter
+                    name="Inactive"
+                    string="Inactive Project srs exigence fonctionnelle"
+                    domain="[('active','=',False)]"
+                />
+                <filter name="categorie" string="Cat&#233;gorie" domain="[('categorie','!=',False)]" />
+                <filter name="composante" string="Composante" domain="[('composante','!=',False)]" />
+                <filter name="etat" string="&#201;tat" domain="[('etat','!=',False)]" />
+                <filter
+                    name="feature_url"
+                    string="URL de la fonctionnalit&#233;"
+                    domain="[('feature_url','!=',False)]"
+                />
+                <filter name="identifiant" string="ID" domain="[('identifiant','!=',False)]" />
+                <filter name="importance" string="Importance" domain="[('importance','!=',False)]" />
+                <filter name="nom_complet" string="Nom complet" domain="[('nom_complet','!=',False)]" />
+                <filter name="note" string="Note" domain="[('note','!=',False)]" />
+                <filter name="srs" string="SRS" domain="[('srs','!=',False)]" />
+                <filter name="srs_depend" string="D&#233;pend de" domain="[('srs_depend','!=',False)]" />
+                <filter name="srs_depended" string="Est d&#233;pendant de" domain="[('srs_depended','!=',False)]" />
+                <filter name="srs_relate" string="Est en relation avec" domain="[('srs_relate','!=',False)]" />
+                <filter name="srs_related" string="Est reli&#233; &#224;" domain="[('srs_related','!=',False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_view_tree" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_tree</field>
+        <field name="model">project.srs.exigence_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="etat" />
+                <field name="identifiant" />
+                <field name="name" />
+                <field name="importance" />
+                <field name="categorie" />
+                <field name="composante" widget="many2many_tags" />
+                <field name="note" />
+                <field name="feature_url" widget="link_button" />
+                <field name="srs_depend" widget="many2many_tags" />
+                <field name="srs_depended" widget="many2many_tags" />
+                <field name="srs_relate" widget="many2many_tags" />
+                <field name="srs_related" widget="many2many_tags" />
+                <field name="srs" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="project_srs_exigence_fonctionnelle_srs_exigence_fonctionnelle_action_window"
+        name="Srs exigence fonctionnelle"
+        res_model="project.srs.exigence_fonctionnelle"
+        view_mode="kanban,pivot,list,graph,form,activity"
+    />
+</odoo>

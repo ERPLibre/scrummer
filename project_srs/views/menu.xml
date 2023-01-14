@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="project_srs" name="Project Srs" sequence="20" web_icon="project_srs,static/description/icon.png" />
+
+    <menuitem id="menu" name="Menu" sequence="1" parent="project_srs" />
+
+    <menuitem id="srs" name="Srs" action="project_srs_srs_action_window" sequence="1" parent="menu" />
+
+    <menuitem
+        id="srs_analyse_non_fonctionnelle"
+        name="Srs analyse non fonctionnelle"
+        action="project_srs_analyse_non_fonctionnelle_srs_analyse_non_fonctionnelle_action_window"
+        sequence="2"
+        parent="menu"
+    />
+
+    <menuitem
+        id="srs_exigence_fonctionnelle"
+        name="Srs exigence fonctionnelle"
+        action="project_srs_exigence_fonctionnelle_srs_exigence_fonctionnelle_action_window"
+        sequence="3"
+        parent="menu"
+    />
+
+    <menuitem
+        id="srs_exigence_fonctionnelle_categorie"
+        name="Srs exigence fonctionnelle categorie"
+        action="project_srs_exigence_fonctionnelle_categorie_srs_exigence_fonctionnelle_categorie_action_window"
+        sequence="4"
+        parent="menu"
+    />
+
+    <menuitem
+        id="srs_exigence_fonctionnelle_composante"
+        name="Srs exigence fonctionnelle composante"
+        action="project_srs_exigence_fonctionnelle_composante_srs_exigence_fonctionnelle_composante_action_window"
+        sequence="5"
+        parent="menu"
+    />
+
+    <menuitem
+        id="srs_exigence_non_fonctionnelle"
+        name="Srs exigence non fonctionnelle"
+        action="project_srs_exigence_non_fonctionnelle_srs_exigence_non_fonctionnelle_action_window"
+        sequence="6"
+        parent="menu"
+    />
+
+    <menuitem
+        id="srs_fct_contrainte"
+        name="Srs fonction de contrainte"
+        action="project_srs_fct_contrainte_srs_fct_contrainte_action_window"
+        sequence="7"
+        parent="menu"
+    />
+
+    <menuitem
+        id="srs_role"
+        name="Srs role"
+        action="project_srs_role_srs_role_action_window"
+        sequence="8"
+        parent="menu"
+    />
+</odoo>

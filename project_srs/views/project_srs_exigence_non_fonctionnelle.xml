@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_srs_exigence_non_fonctionnelle_view_form" model="ir.ui.view">
+        <field name="name">project_srs_exigence_non_fonctionnelle_form</field>
+        <field name="model">project.srs.exigence_non_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" />
+                        </button>
+                    </div>
+                    <group>
+                        <field name="etat" />
+                    </group>
+                    <group>
+                        <field name="identifiant" />
+                    </group>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="note" />
+                    </group>
+                    <group>
+                        <field name="srs" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_non_fonctionnelle_view_graph" model="ir.ui.view">
+        <field name="name">project_srs_exigence_non_fonctionnelle_graph</field>
+        <field name="model">project.srs.exigence_non_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <graph string="Project srs exigence non fonctionnelle">
+                <field name="name" type="row" />
+                <field name="etat" type="row" />
+                <field name="identifiant" type="row" />
+                <field name="note" type="row" />
+                <field name="srs" type="row" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_non_fonctionnelle_view_kanban" model="ir.ui.view">
+        <field name="name">project_srs_exigence_non_fonctionnelle_kanban</field>
+        <field name="model">project.srs.exigence_non_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <field name="etat" />
+                <field name="identifiant" />
+                <field name="note" />
+                <field name="srs" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="etat" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="identifiant" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="note" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="srs" />
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_non_fonctionnelle_view_pivot" model="ir.ui.view">
+        <field name="name">project_srs_exigence_non_fonctionnelle_pivot</field>
+        <field name="model">project.srs.exigence_non_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <pivot string="Project srs exigence non fonctionnelle">
+                <field name="name" type="row" />
+                <field name="etat" type="row" />
+                <field name="identifiant" type="row" />
+                <field name="note" type="row" />
+                <field name="srs" type="row" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_non_fonctionnelle_view_search" model="ir.ui.view">
+        <field name="name">project_srs_exigence_non_fonctionnelle_search</field>
+        <field name="model">project.srs.exigence_non_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <search string="Project srs exigence non fonctionnelle">
+                <filter name="name" string="Exigence" domain="[('name','!=',False)]" />
+                <filter
+                    name="Inactive"
+                    string="Inactive Project srs exigence non fonctionnelle"
+                    domain="[('active','=',False)]"
+                />
+                <filter name="etat" string="&#201;tat" domain="[('etat','!=',False)]" />
+                <filter name="identifiant" string="ID" domain="[('identifiant','!=',False)]" />
+                <filter name="note" string="Note" domain="[('note','!=',False)]" />
+                <filter name="srs" string="SRS" domain="[('srs','!=',False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_non_fonctionnelle_view_tree" model="ir.ui.view">
+        <field name="name">project_srs_exigence_non_fonctionnelle_tree</field>
+        <field name="model">project.srs.exigence_non_fonctionnelle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="etat" />
+                <field name="identifiant" />
+                <field name="name" />
+                <field name="note" />
+                <field name="srs" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="project_srs_exigence_non_fonctionnelle_srs_exigence_non_fonctionnelle_action_window"
+        name="Srs exigence non fonctionnelle"
+        res_model="project.srs.exigence_non_fonctionnelle"
+        view_mode="kanban,pivot,list,graph,form,activity"
+    />
+</odoo>

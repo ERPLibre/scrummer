@@ -1,0 +1,23 @@
+{
+    "name": "Project Srs",
+    "category": "Project",
+    "version": "12.0.1.0",
+    "author": "TechnoLibre",
+    "license": "AGPL-3",
+    "website": "https://technolibre.ca",
+    "application": True,
+    "depends": ["mail"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/project_srs.xml",
+        "views/project_srs_analyse_non_fonctionnelle.xml",
+        "views/project_srs_exigence_fonctionnelle.xml",
+        "views/project_srs_exigence_fonctionnelle_categorie.xml",
+        "views/project_srs_exigence_fonctionnelle_composante.xml",
+        "views/project_srs_exigence_non_fonctionnelle.xml",
+        "views/project_srs_fct_contrainte.xml",
+        "views/project_srs_role.xml",
+        "views/menu.xml",
+    ],
+    "installable": True,
+}

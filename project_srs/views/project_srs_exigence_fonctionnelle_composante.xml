@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_srs_exigence_fonctionnelle_composante_view_form" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_composante_form</field>
+        <field name="model">project.srs.exigence_fonctionnelle.composante</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" />
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="description" />
+                    </group>
+                    <group>
+                        <field name="sequence" />
+                    </group>
+                    <group>
+                        <field name="exigence_fonctionnelle" options="{'no_create': True}" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_composante_view_graph" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_composante_graph</field>
+        <field name="model">project.srs.exigence_fonctionnelle.composante</field>
+        <field name="arch" type="xml">
+            <graph string="Project srs exigence fonctionnelle composante">
+                <field name="name" type="row" />
+                <field name="description" type="row" />
+                <field name="sequence" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_composante_view_kanban" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_composante_kanban</field>
+        <field name="model">project.srs.exigence_fonctionnelle.composante</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <field name="description" />
+                <field name="sequence" />
+                <field name="exigence_fonctionnelle" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="description" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="sequence" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="exigence_fonctionnelle" />
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_composante_view_pivot" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_composante_pivot</field>
+        <field name="model">project.srs.exigence_fonctionnelle.composante</field>
+        <field name="arch" type="xml">
+            <pivot string="Project srs exigence fonctionnelle composante">
+                <field name="name" type="row" />
+                <field name="description" type="row" />
+                <field name="sequence" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_composante_view_search" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_composante_search</field>
+        <field name="model">project.srs.exigence_fonctionnelle.composante</field>
+        <field name="arch" type="xml">
+            <search string="Project srs exigence fonctionnelle composante">
+                <filter name="name" string="Nom" domain="[('name','!=',False)]" />
+                <filter
+                    name="Inactive"
+                    string="Inactive Project srs exigence fonctionnelle composante"
+                    domain="[('active','=',False)]"
+                />
+                <filter name="description" string="Description" domain="[('description','!=',False)]" />
+                <filter
+                    name="exigence_fonctionnelle"
+                    string="Exigence fonctionnelle"
+                    domain="[('exigence_fonctionnelle','!=',False)]"
+                />
+                <filter name="sequence" string="S&#233;quence" domain="[('sequence','!=',False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_fonctionnelle_composante_view_tree" model="ir.ui.view">
+        <field name="name">project_srs_exigence_fonctionnelle_composante_tree</field>
+        <field name="model">project.srs.exigence_fonctionnelle.composante</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="description" />
+                <field name="sequence" />
+                <field name="exigence_fonctionnelle" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="project_srs_exigence_fonctionnelle_composante_srs_exigence_fonctionnelle_composante_action_window"
+        name="Srs exigence fonctionnelle composante"
+        res_model="project.srs.exigence_fonctionnelle.composante"
+        view_mode="kanban,pivot,list,graph,form,activity"
+    />
+</odoo>
