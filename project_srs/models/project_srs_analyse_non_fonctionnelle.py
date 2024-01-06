@@ -7,6 +7,11 @@ class ProjectSrsAnalyseNonFonctionnelle(models.Model):
     _description = "Analyse non-fonctionnelle"
     _order = "sequence"
 
+    name = fields.Char(
+        string="Caractéristique",
+        track_visibility="onchange",
+    )
+
     cas = fields.Text(
         track_visibility="onchange",
         help="- Raison du choix - Mesure",
@@ -20,11 +25,6 @@ class ProjectSrsAnalyseNonFonctionnelle(models.Model):
 
     active = fields.Boolean(default=True)
 
-    name = fields.Char(
-        string="Caractéristique",
-        track_visibility="onchange",
-    )
-
     sequence = fields.Integer(
         string="Séquence",
         track_visibility="onchange",
@@ -32,6 +32,6 @@ class ProjectSrsAnalyseNonFonctionnelle(models.Model):
     )
 
     srs = fields.Many2one(
-        string="SRS",
         comodel_name="project.srs",
+        string="SRS",
     )

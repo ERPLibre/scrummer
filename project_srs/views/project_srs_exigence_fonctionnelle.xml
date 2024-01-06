@@ -7,7 +7,7 @@
             <form string="Titre">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
                             <field name="active" widget="boolean_button" />
                         </button>
                     </div>
@@ -54,7 +54,7 @@
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
                     <field name="activity_ids" widget="mail_activity" />
-                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -155,29 +155,29 @@
         <field name="model">project.srs.exigence_fonctionnelle</field>
         <field name="arch" type="xml">
             <search string="Project srs exigence fonctionnelle">
-                <filter name="name" string="Exigence" domain="[('name','!=',False)]" />
+                <filter domain="[('nom_complet','!=',False)]" name="nom_complet" string="Nom complet" />
                 <filter
+                    domain="[('active','=',False)]"
                     name="Inactive"
                     string="Inactive Project srs exigence fonctionnelle"
-                    domain="[('active','=',False)]"
                 />
-                <filter name="categorie" string="Cat&#233;gorie" domain="[('categorie','!=',False)]" />
-                <filter name="composante" string="Composante" domain="[('composante','!=',False)]" />
-                <filter name="etat" string="&#201;tat" domain="[('etat','!=',False)]" />
+                <filter domain="[('categorie','!=',False)]" name="categorie" string="Cat&#233;gorie" />
+                <filter domain="[('composante','!=',False)]" name="composante" string="Composante" />
+                <filter domain="[('etat','!=',False)]" name="etat" string="&#201;tat" />
                 <filter
+                    domain="[('feature_url','!=',False)]"
                     name="feature_url"
                     string="URL de la fonctionnalit&#233;"
-                    domain="[('feature_url','!=',False)]"
                 />
-                <filter name="identifiant" string="ID" domain="[('identifiant','!=',False)]" />
-                <filter name="importance" string="Importance" domain="[('importance','!=',False)]" />
-                <filter name="nom_complet" string="Nom complet" domain="[('nom_complet','!=',False)]" />
-                <filter name="note" string="Note" domain="[('note','!=',False)]" />
-                <filter name="srs" string="SRS" domain="[('srs','!=',False)]" />
-                <filter name="srs_depend" string="D&#233;pend de" domain="[('srs_depend','!=',False)]" />
-                <filter name="srs_depended" string="Est d&#233;pendant de" domain="[('srs_depended','!=',False)]" />
-                <filter name="srs_relate" string="Est en relation avec" domain="[('srs_relate','!=',False)]" />
-                <filter name="srs_related" string="Est reli&#233; &#224;" domain="[('srs_related','!=',False)]" />
+                <filter domain="[('identifiant','!=',False)]" name="identifiant" string="ID" />
+                <filter domain="[('importance','!=',False)]" name="importance" string="Importance" />
+                <filter domain="[('name','!=',False)]" name="name" string="Exigence" />
+                <filter domain="[('note','!=',False)]" name="note" string="Note" />
+                <filter domain="[('srs','!=',False)]" name="srs" string="SRS" />
+                <filter domain="[('srs_depend','!=',False)]" name="srs_depend" string="D&#233;pend de" />
+                <filter domain="[('srs_depended','!=',False)]" name="srs_depended" string="Est d&#233;pendant de" />
+                <filter domain="[('srs_relate','!=',False)]" name="srs_relate" string="Est en relation avec" />
+                <filter domain="[('srs_related','!=',False)]" name="srs_related" string="Est reli&#233; &#224;" />
             </search>
         </field>
     </record>
@@ -208,6 +208,6 @@
         id="project_srs_exigence_fonctionnelle_srs_exigence_fonctionnelle_action_window"
         name="Srs exigence fonctionnelle"
         res_model="project.srs.exigence_fonctionnelle"
-        view_mode="kanban,pivot,list,graph,form,activity"
+        view_mode="kanban,tree,pivot,graph,form,activity"
     />
 </odoo>

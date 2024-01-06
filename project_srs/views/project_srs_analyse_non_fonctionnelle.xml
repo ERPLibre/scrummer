@@ -7,7 +7,7 @@
             <form string="Titre">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
                             <field name="active" widget="boolean_button" />
                         </button>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
                     <field name="activity_ids" widget="mail_activity" />
-                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -118,16 +118,16 @@
         <field name="model">project.srs.analyse_non_fonctionnelle</field>
         <field name="arch" type="xml">
             <search string="Project srs analyse non fonctionnelle">
-                <filter name="name" string="Caract&#233;ristique" domain="[('name','!=',False)]" />
+                <filter domain="[('name','!=',False)]" name="name" string="Caract&#233;ristique" />
                 <filter
+                    domain="[('active','=',False)]"
                     name="Inactive"
                     string="Inactive Project srs analyse non fonctionnelle"
-                    domain="[('active','=',False)]"
                 />
-                <filter name="cas" string="Cas" domain="[('cas','!=',False)]" />
-                <filter name="importance" string="Importance" domain="[('importance','!=',False)]" />
-                <filter name="sequence" string="S&#233;quence" domain="[('sequence','!=',False)]" />
-                <filter name="srs" string="SRS" domain="[('srs','!=',False)]" />
+                <filter domain="[('cas','!=',False)]" name="cas" string="Cas" />
+                <filter domain="[('importance','!=',False)]" name="importance" string="Importance" />
+                <filter domain="[('sequence','!=',False)]" name="sequence" string="S&#233;quence" />
+                <filter domain="[('srs','!=',False)]" name="srs" string="SRS" />
             </search>
         </field>
     </record>
@@ -150,6 +150,6 @@
         id="project_srs_analyse_non_fonctionnelle_srs_analyse_non_fonctionnelle_action_window"
         name="Srs analyse non fonctionnelle"
         res_model="project.srs.analyse_non_fonctionnelle"
-        view_mode="kanban,pivot,list,graph,form,activity"
+        view_mode="kanban,tree,pivot,graph,form,activity"
     />
 </odoo>

@@ -7,7 +7,7 @@
             <form string="Titre">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
                             <field name="active" widget="boolean_button" />
                         </button>
                     </div>
@@ -27,7 +27,7 @@
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
                     <field name="activity_ids" widget="mail_activity" />
-                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -105,18 +105,18 @@
         <field name="model">project.srs.exigence_fonctionnelle.categorie</field>
         <field name="arch" type="xml">
             <search string="Project srs exigence fonctionnelle categorie">
-                <filter name="name" string="Nom" domain="[('name','!=',False)]" />
+                <filter domain="[('name','!=',False)]" name="name" string="Nom" />
                 <filter
+                    domain="[('active','=',False)]"
                     name="Inactive"
                     string="Inactive Project srs exigence fonctionnelle categorie"
-                    domain="[('active','=',False)]"
                 />
-                <filter name="description" string="Description" domain="[('description','!=',False)]" />
-                <filter name="sequence" string="S&#233;quence" domain="[('sequence','!=',False)]" />
+                <filter domain="[('description','!=',False)]" name="description" string="Description" />
+                <filter domain="[('sequence','!=',False)]" name="sequence" string="S&#233;quence" />
                 <filter
+                    domain="[('exigence_fonctionnelle','!=',False)]"
                     name="exigence_fonctionnelle"
                     string="Exigence fonctionnelle"
-                    domain="[('exigence_fonctionnelle','!=',False)]"
                 />
             </search>
         </field>
@@ -139,6 +139,6 @@
         id="project_srs_exigence_fonctionnelle_categorie_srs_exigence_fonctionnelle_categorie_action_window"
         name="Srs exigence fonctionnelle categorie"
         res_model="project.srs.exigence_fonctionnelle.categorie"
-        view_mode="kanban,pivot,list,graph,form,activity"
+        view_mode="kanban,tree,pivot,graph,form,activity"
     />
 </odoo>

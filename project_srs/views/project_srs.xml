@@ -7,7 +7,7 @@
             <form string="Titre">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
                             <field name="active" widget="boolean_button" />
                         </button>
                     </div>
@@ -54,7 +54,7 @@
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
                     <field name="activity_ids" widget="mail_activity" />
-                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -196,56 +196,56 @@
         <field name="model">project.srs</field>
         <field name="arch" type="xml">
             <search string="Project srs">
-                <filter name="name" string="Nom" domain="[('name','!=',False)]" />
-                <filter name="Inactive" string="Inactive Project srs" domain="[('active','=',False)]" />
-                <filter name="dans_quel_but" string="Dans quel but?" domain="[('dans_quel_but','!=',False)]" />
-                <filter name="definition" string="D&#233;finition" domain="[('definition','!=',False)]" />
+                <filter domain="[('name','!=',False)]" name="name" string="Nom" />
+                <filter domain="[('active','=',False)]" name="Inactive" string="Inactive Project srs" />
+                <filter domain="[('dans_quel_but','!=',False)]" name="dans_quel_but" string="Dans quel but?" />
+                <filter domain="[('definition','!=',False)]" name="definition" string="D&#233;finition" />
                 <filter
+                    domain="[('pourquoi_besoin_existe','!=',False)]"
                     name="pourquoi_besoin_existe"
                     string="Pourquoi le besoin existe-t-il?"
-                    domain="[('pourquoi_besoin_existe','!=',False)]"
                 />
                 <filter
+                    domain="[('qui_pourrait_faire_evoluer_besoin','!=',False)]"
                     name="qui_pourrait_faire_evoluer_besoin"
                     string="Qu'est-ce qui pourrait faire &#233;voluer le besoin?"
-                    domain="[('qui_pourrait_faire_evoluer_besoin','!=',False)]"
                 />
                 <filter
+                    domain="[('qui_rend_service','!=',False)]"
                     name="qui_rend_service"
                     string="&#192; qui le produit rend-il service?"
-                    domain="[('qui_rend_service','!=',False)]"
                 />
                 <filter
+                    domain="[('quoi_pourrait_faire_disparaitre','!=',False)]"
                     name="quoi_pourrait_faire_disparaitre"
                     string="Qu'est-ce qui pourrait faire dispara&#238;tre (remettre en cause) le besoin?"
-                    domain="[('quoi_pourrait_faire_disparaitre','!=',False)]"
                 />
                 <filter
+                    domain="[('quoi_produit_agit','!=',False)]"
                     name="quoi_produit_agit"
                     string="Sur qui, quoi le produit agit-il?"
-                    domain="[('quoi_produit_agit','!=',False)]"
                 />
                 <filter
+                    domain="[('analyse_non_fonctionnelle','!=',False)]"
                     name="analyse_non_fonctionnelle"
                     string="Analyse non-fonctionnelle"
-                    domain="[('analyse_non_fonctionnelle','!=',False)]"
                 />
                 <filter
+                    domain="[('exigence_fonctionnelle','!=',False)]"
                     name="exigence_fonctionnelle"
                     string="Exigence fonctionnelle"
-                    domain="[('exigence_fonctionnelle','!=',False)]"
                 />
                 <filter
+                    domain="[('exigence_non_fonctionnelle','!=',False)]"
                     name="exigence_non_fonctionnelle"
                     string="Exigence non-fonctionnelle"
-                    domain="[('exigence_non_fonctionnelle','!=',False)]"
                 />
                 <filter
+                    domain="[('fct_contrainte_ids','!=',False)]"
                     name="fct_contrainte_ids"
                     string="Fonction de contrainte"
-                    domain="[('fct_contrainte_ids','!=',False)]"
                 />
-                <filter name="role" string="R&#244;le" domain="[('role','!=',False)]" />
+                <filter domain="[('role','!=',False)]" name="role" string="R&#244;le" />
             </search>
         </field>
     </record>
@@ -276,6 +276,6 @@
         id="project_srs_srs_action_window"
         name="Srs"
         res_model="project.srs"
-        view_mode="kanban,pivot,list,graph,form,activity"
+        view_mode="kanban,tree,pivot,graph,form,activity"
     />
 </odoo>

@@ -7,7 +7,7 @@
             <form string="Titre">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
                             <field name="active" widget="boolean_button" />
                         </button>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
                     <field name="activity_ids" widget="mail_activity" />
-                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}" />
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -117,17 +117,13 @@
         <field name="name">project_srs_fct_contrainte_search</field>
         <field name="model">project.srs.fct_contrainte</field>
         <field name="arch" type="xml">
-            <search string="Project Srs fonction de contrainte">
-                <filter name="name" string="Contrainte" domain="[('name','!=',False)]" />
-                <filter
-                    name="Inactive"
-                    string="Inactive Project Srs fonction de contrainte"
-                    domain="[('active','=',False)]"
-                />
-                <filter name="etat" string="&#201;tat" domain="[('etat','!=',False)]" />
-                <filter name="identifiant" string="ID" domain="[('identifiant','!=',False)]" />
-                <filter name="project_srs" string="SRS" domain="[('project_srs','!=',False)]" />
-                <filter name="reference" string="R&#233;f&#233;rence" domain="[('reference','!=',False)]" />
+            <search string="Project srs fct contrainte">
+                <filter domain="[('name','!=',False)]" name="name" string="Contrainte" />
+                <filter domain="[('active','=',False)]" name="Inactive" string="Inactive Project srs fct contrainte" />
+                <filter domain="[('etat','!=',False)]" name="etat" string="&#201;tat" />
+                <filter domain="[('identifiant','!=',False)]" name="identifiant" string="ID" />
+                <filter domain="[('project_srs','!=',False)]" name="project_srs" string="SRS" />
+                <filter domain="[('reference','!=',False)]" name="reference" string="R&#233;f&#233;rence" />
             </search>
         </field>
     </record>
@@ -150,6 +146,6 @@
         id="project_srs_fct_contrainte_srs_fct_contrainte_action_window"
         name="Srs fonction de contrainte"
         res_model="project.srs.fct_contrainte"
-        view_mode="kanban,pivot,list,graph,form,activity"
+        view_mode="kanban,tree,pivot,graph,form,activity"
     />
 </odoo>

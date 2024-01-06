@@ -7,14 +7,14 @@ class ProjectSrsRole(models.Model):
     _description = "Rôles"
     _order = "sequence"
 
-    active = fields.Boolean(default=True)
-
-    description = fields.Text(track_visibility="onchange")
-
     name = fields.Char(
         string="Rôle",
         track_visibility="onchange",
     )
+
+    active = fields.Boolean(default=True)
+
+    description = fields.Text(track_visibility="onchange")
 
     sequence = fields.Integer(
         string="Séquence",
@@ -23,6 +23,6 @@ class ProjectSrsRole(models.Model):
     )
 
     srs = fields.Many2one(
-        string="SRS",
         comodel_name="project.srs",
+        string="SRS",
     )

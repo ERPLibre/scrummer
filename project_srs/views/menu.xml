@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!--Root menu-->
+
     <menuitem id="project_srs" name="Project Srs" sequence="20" web_icon="project_srs,static/description/icon.png" />
+
+    <!--Sub menu-->
 
     <menuitem id="menu" name="Menu" sequence="1" parent="project_srs" />
 
     <menuitem id="srs" name="Srs" action="project_srs_srs_action_window" sequence="1" parent="menu" />
+    <!--Child menu-->
+
 
     <menuitem
         id="srs_analyse_non_fonctionnelle"

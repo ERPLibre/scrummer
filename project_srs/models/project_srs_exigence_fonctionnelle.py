@@ -5,12 +5,18 @@ class ProjectSrsExigenceFonctionnelle(models.Model):
     _name = "project.srs.exigence_fonctionnelle"
     _inherit = ["mail.activity.mixin", "mail.thread"]
     _description = "Exigence fonctionnelle"
-    _order = "identifiant"
     _rec_name = "nom_complet"
+    _order = "identifiant"
+
+    nom_complet = fields.Char(
+        string="Nom complet",
+        compute="_compute_nom_complet",
+        store=True,
+    )
 
     categorie = fields.Many2one(
-        string="Catégorie",
         comodel_name="project.srs.exigence_fonctionnelle.categorie",
+        string="Catégorie",
     )
 
     identifiant = fields.Char(
@@ -41,12 +47,6 @@ class ProjectSrsExigenceFonctionnelle(models.Model):
 
     active = fields.Boolean(default=True)
 
-    nom_complet = fields.Char(
-        string="Nom complet",
-        compute="_compute_nom_complet",
-        store=True,
-    )
-
     note = fields.Text(track_visibility="onchange")
 
     etat = fields.Selection(
@@ -64,8 +64,8 @@ class ProjectSrsExigenceFonctionnelle(models.Model):
     )
 
     srs = fields.Many2one(
-        string="SRS",
         comodel_name="project.srs",
+        string="SRS",
     )
 
     srs_depend = fields.Many2many(

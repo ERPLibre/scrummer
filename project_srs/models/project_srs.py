@@ -6,34 +6,39 @@ class ProjectSrs(models.Model):
     _inherit = ["mail.activity.mixin", "mail.thread"]
     _description = "Expression"
 
+    name = fields.Char(
+        string="Nom",
+        track_visibility="onchange",
+    )
+
     analyse_non_fonctionnelle = fields.One2many(
-        string="Analyse non-fonctionnelle",
         comodel_name="project.srs.analyse_non_fonctionnelle",
         inverse_name="srs",
+        string="Analyse non-fonctionnelle",
     )
 
     exigence_fonctionnelle = fields.One2many(
-        string="Exigence fonctionnelle",
         comodel_name="project.srs.exigence_fonctionnelle",
         inverse_name="srs",
+        string="Exigence fonctionnelle",
     )
 
     exigence_non_fonctionnelle = fields.One2many(
-        string="Exigence non-fonctionnelle",
         comodel_name="project.srs.exigence_non_fonctionnelle",
         inverse_name="srs",
+        string="Exigence non-fonctionnelle",
     )
 
     fct_contrainte_ids = fields.One2many(
-        string="Fonction de contrainte",
         comodel_name="project.srs.fct_contrainte",
         inverse_name="project_srs",
+        string="Fonction de contrainte",
     )
 
     role = fields.One2many(
-        string="Rôle",
         comodel_name="project.srs.role",
         inverse_name="srs",
+        string="Rôle",
     )
 
     active = fields.Boolean(default=True)
@@ -73,11 +78,6 @@ class ProjectSrs(models.Model):
 
     definition = fields.Text(
         string="Définition",
-        track_visibility="onchange",
-    )
-
-    name = fields.Char(
-        string="Nom",
         track_visibility="onchange",
     )
 

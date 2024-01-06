@@ -7,13 +7,6 @@ class ProjectSrsFctContrainte(models.Model):
     _description = "Fonction de contrainte"
     _order = "identifiant"
 
-    active = fields.Boolean(default=True)
-
-    identifiant = fields.Char(
-        string="ID",
-        track_visibility="onchange",
-    )
-
     name = fields.Char(
         string="Contrainte",
         track_visibility="onchange",
@@ -21,6 +14,13 @@ class ProjectSrsFctContrainte(models.Model):
             "Les fonctions qui répondent à des attentes obligatoires (normes,"
             " textes de lois, brevets, …)"
         ),
+    )
+
+    active = fields.Boolean(default=True)
+
+    identifiant = fields.Char(
+        string="ID",
+        track_visibility="onchange",
     )
 
     etat = fields.Selection(
@@ -38,8 +38,8 @@ class ProjectSrsFctContrainte(models.Model):
     )
 
     project_srs = fields.Many2one(
-        string="SRS",
         comodel_name="project.srs",
+        string="SRS",
     )
 
     reference = fields.Text(

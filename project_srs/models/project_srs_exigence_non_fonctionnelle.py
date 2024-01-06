@@ -7,6 +7,16 @@ class ProjectSrsExigenceNonFonctionnelle(models.Model):
     _description = "Exigence non-fonctionnelle"
     _order = "identifiant"
 
+    name = fields.Char(
+        string="Exigence",
+        track_visibility="onchange",
+        help=(
+            "Les exigences non-fonctionnelles comprennent les fonctions de"
+            " services du produit, veuillez vous référer aux critères de la"
+            " section des caractéristiques de qualité."
+        ),
+    )
+
     active = fields.Boolean(default=True)
 
     identifiant = fields.Char(
@@ -29,19 +39,9 @@ class ProjectSrsExigenceNonFonctionnelle(models.Model):
         help="État de l'avancement du requis.",
     )
 
-    name = fields.Char(
-        string="Exigence",
-        track_visibility="onchange",
-        help=(
-            "Les exigences non-fonctionnelles comprennent les fonctions de"
-            " services du produit, veuillez vous référer aux critères de la"
-            " section des caractéristiques de qualité."
-        ),
-    )
-
     note = fields.Text(track_visibility="onchange")
 
     srs = fields.Many2one(
-        string="SRS",
         comodel_name="project.srs",
+        string="SRS",
     )
