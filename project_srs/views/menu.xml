@@ -8,9 +8,9 @@
 
     <menuitem id="menu" name="Menu" sequence="1" parent="project_srs" />
 
-    <menuitem id="srs" name="Srs" action="project_srs_srs_action_window" sequence="1" parent="menu" />
     <!--Child menu-->
 
+    <menuitem id="srs" name="Srs" action="project_srs_srs_action_window" sequence="1" parent="menu" />
 
     <menuitem
         id="srs_analyse_non_fonctionnelle"
@@ -53,10 +53,18 @@
     />
 
     <menuitem
-        id="srs_fct_contrainte"
-        name="Srs fonction de contrainte"
-        action="project_srs_fct_contrainte_srs_fct_contrainte_action_window"
+        id="srs_exigence_status"
+        name="Srs exigence status"
+        action="project_srs_exigence_status_srs_exigence_status_action_window"
         sequence="7"
+        parent="menu"
+    />
+
+    <menuitem
+        id="srs_fct_contrainte"
+        name="Srs fct contrainte"
+        action="project_srs_fct_contrainte_srs_fct_contrainte_action_window"
+        sequence="8"
         parent="menu"
     />
 
@@ -64,7 +72,7 @@
         id="srs_role"
         name="Srs role"
         action="project_srs_role_srs_role_action_window"
-        sequence="8"
+        sequence="9"
         parent="menu"
     />
 </odoo>

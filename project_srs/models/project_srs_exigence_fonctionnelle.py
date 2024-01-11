@@ -20,7 +20,9 @@ class ProjectSrsExigenceFonctionnelle(models.Model):
     )
 
     identifiant = fields.Char(
-        string="ID",
+        string="Key",
+        compute="_compute_identifiant",
+        store=True,
         track_visibility="onchange",
     )
 
@@ -62,6 +64,12 @@ class ProjectSrsExigenceFonctionnelle(models.Model):
         default="nouveau",
         help="État de l'avancement du requis.",
     )
+
+    dev_status = fields.Many2one(string="Dev status", track_visibility="onchange", comodel_name="project.srs.exigence_status", help="Status du développement")
+
+    dev_note = fields.Html(string="Dev note", track_visibility="onchange", help="Note de développement pour comprendre le status.")
+
+    dev_module = fields.Char(string="Dev module", track_visibility="onchange", help="Liste de module séparé par «espace ou saut de ligne» pour supporter cette exigence.")
 
     srs = fields.Many2one(
         comodel_name="project.srs",
@@ -114,3 +122,16 @@ class ProjectSrsExigenceFonctionnelle(models.Model):
                 rec.nom_complet = f"{rec.name}"
             elif rec.identifiant:
                 rec.nom_complet = f"{rec.identifiant}"
+
+    @api.depends("categorie")
+    def _compute_identifiant(self):
+        for rec in self:
+            if not isinstance(rec.id, models.NewId):
+                # TODO wrong way, don't use rec.id, but use a generator
+                if rec.categorie and rec.categorie.key:
+                    value = f"{rec.categorie.key}-{rec.id}"
+                else:
+                    value = f"EMP-{rec.id}"
+            else:
+                value = ""
+            rec.identifiant = value

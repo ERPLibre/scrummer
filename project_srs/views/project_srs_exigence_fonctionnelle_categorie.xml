@@ -18,6 +18,12 @@
                         <field name="description" />
                     </group>
                     <group>
+                        <field name="key" />
+                    </group>
+                    <group>
+                        <field name="key_forced" />
+                    </group>
+                    <group>
                         <field name="sequence" />
                     </group>
                     <group>
@@ -127,6 +133,7 @@
         <field name="model">project.srs.exigence_fonctionnelle.categorie</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="key" />
                 <field name="name" />
                 <field name="description" />
                 <field name="sequence" />

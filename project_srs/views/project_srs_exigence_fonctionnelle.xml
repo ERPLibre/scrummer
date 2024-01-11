@@ -33,6 +33,16 @@
                         <field name="note" />
                     </group>
                     <group>
+                        <field name="dev_status" />
+                    </group>
+                    <group>
+<!--                        <field name="dev_note" groups="base.group_no_one" />-->
+                        <field name="dev_note" />
+                    </group>
+                    <group>
+                        <field name="dev_module" />
+                    </group>
+                    <group>
                         <field name="feature_url" />
                     </group>
                     <group>
@@ -194,6 +204,9 @@
                 <field name="categorie" />
                 <field name="composante" widget="many2many_tags" />
                 <field name="note" />
+                <field name="dev_status" />
+                <field name="dev_note" />
+                <field name="dev_module" />
                 <field name="feature_url" widget="link_button" />
                 <field name="srs_depend" widget="many2many_tags" />
                 <field name="srs_depended" widget="many2many_tags" />

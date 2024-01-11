@@ -15,6 +15,10 @@
                         <field name="etat" />
                     </group>
                     <group>
+<!--                        <field name="dev_note" groups="base.group_no_one" />-->
+                        <field name="dev_note" />
+                    </group>
+                    <group>
                         <field name="identifiant" />
                     </group>
                     <group>
@@ -136,6 +140,7 @@
                 <field name="etat" />
                 <field name="identifiant" />
                 <field name="name" />
+                <field name="dev_note" />
                 <field name="reference" />
                 <field name="project_srs" />
             </tree>

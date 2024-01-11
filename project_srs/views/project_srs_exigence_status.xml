@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_srs_exigence_status_view_form" model="ir.ui.view">
+        <field name="name">project_srs_exigence_status_form</field>
+        <field name="model">project.srs.exigence_status</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_status_view_graph" model="ir.ui.view">
+        <field name="name">project_srs_exigence_status_graph</field>
+        <field name="model">project.srs.exigence_status</field>
+        <field name="arch" type="xml">
+            <graph string="Project srs exigence status">
+                <field name="name" type="row" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_status_view_kanban" model="ir.ui.view">
+        <field name="name">project_srs_exigence_status_kanban</field>
+        <field name="model">project.srs.exigence_status</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_status_view_pivot" model="ir.ui.view">
+        <field name="name">project_srs_exigence_status_pivot</field>
+        <field name="model">project.srs.exigence_status</field>
+        <field name="arch" type="xml">
+            <pivot string="Project srs exigence status">
+                <field name="name" type="row" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_status_view_search" model="ir.ui.view">
+        <field name="name">project_srs_exigence_status_search</field>
+        <field name="model">project.srs.exigence_status</field>
+        <field name="arch" type="xml">
+            <search string="Project srs exigence status">
+                <filter domain="[('name','!=',False)]" name="name" string="Name" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_srs_exigence_status_view_tree" model="ir.ui.view">
+        <field name="name">project_srs_exigence_status_tree</field>
+        <field name="model">project.srs.exigence_status</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="project_srs_exigence_status_srs_exigence_status_action_window"
+        name="Srs exigence status"
+        res_model="project.srs.exigence_status"
+        view_mode="kanban,tree,pivot,graph,form"
+    />
+</odoo>

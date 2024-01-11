@@ -7,6 +7,7 @@ from . import (
     project_srs_exigence_fonctionnelle_categorie,
     project_srs_exigence_fonctionnelle_composante,
     project_srs_exigence_non_fonctionnelle,
+    project_srs_exigence_status,
     project_srs_fct_contrainte,
     project_srs_role,
 )

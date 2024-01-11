@@ -5,52 +5,53 @@
         <field name="model">project.srs</field>
         <field name="arch" type="xml">
             <form string="Titre">
-                <sheet>
-                    <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
-                            <field name="active" widget="boolean_button" />
-                        </button>
-                    </div>
-                    <group>
-                        <field name="name" />
-                    </group>
-                    <group>
-                        <field name="definition" />
-                    </group>
-                    <group>
-                        <field name="qui_rend_service" />
-                    </group>
-                    <group>
-                        <field name="quoi_produit_agit" />
-                    </group>
-                    <group>
-                        <field name="dans_quel_but" />
-                    </group>
-                    <group>
-                        <field name="quoi_pourrait_faire_disparaitre" />
-                    </group>
-                    <group>
-                        <field name="pourquoi_besoin_existe" />
-                    </group>
-                    <group>
-                        <field name="qui_pourrait_faire_evoluer_besoin" />
-                    </group>
-                    <group>
-                        <field name="fct_contrainte_ids" />
-                    </group>
-                    <group>
-                        <field name="role" />
-                    </group>
-                    <group>
-                        <field name="analyse_non_fonctionnelle" />
-                    </group>
-                    <group>
-                        <field name="exigence_non_fonctionnelle" />
-                    </group>
-                    <group>
-                        <field name="exigence_fonctionnelle" />
-                    </group>
-                </sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" icon="fa-archive" name="toggle_active" type="object">
+                        <field name="active" widget="boolean_button" />
+                    </button>
+                </div>
+                <group>
+                    <field name="name" />
+                </group>
+                <group>
+                    <field name="definition" />
+                </group>
+                <group>
+                    <field name="qui_rend_service" />
+                </group>
+                <group>
+                    <field name="quoi_produit_agit" />
+                </group>
+                <group>
+                    <field name="dans_quel_but" />
+                </group>
+                <group>
+                    <field name="quoi_pourrait_faire_disparaitre" />
+                </group>
+                <group>
+                    <field name="pourquoi_besoin_existe" />
+                </group>
+                <group>
+                    <field name="qui_pourrait_faire_evoluer_besoin" />
+                </group>
+                <group>
+                    <field name="lexique" />
+                </group>
+                <group>
+                    <field name="fct_contrainte_ids" />
+                </group>
+                <group>
+                    <field name="role" />
+                </group>
+                <group>
+                    <field name="analyse_non_fonctionnelle" />
+                </group>
+                <group>
+                    <field name="exigence_non_fonctionnelle" />
+                </group>
+                <group>
+                    <field name="exigence_fonctionnelle" />
+                </group>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
                     <field name="activity_ids" widget="mail_activity" />

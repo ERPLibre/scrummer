@@ -15,6 +15,7 @@
         "views/project_srs_exigence_fonctionnelle_categorie.xml",
         "views/project_srs_exigence_fonctionnelle_composante.xml",
         "views/project_srs_exigence_non_fonctionnelle.xml",
+        "views/project_srs_exigence_status.xml",
         "views/project_srs_fct_contrainte.xml",
         "views/project_srs_role.xml",
         "views/menu.xml",

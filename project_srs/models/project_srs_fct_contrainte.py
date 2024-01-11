@@ -19,7 +19,9 @@ class ProjectSrsFctContrainte(models.Model):
     active = fields.Boolean(default=True)
 
     identifiant = fields.Char(
-        string="ID",
+        string="Key",
+        compute="_compute_identifiant",
+        store=True,
         track_visibility="onchange",
     )
 
@@ -37,6 +39,8 @@ class ProjectSrsFctContrainte(models.Model):
         help="État de l'avancement du requis.",
     )
 
+    dev_note = fields.Html(string="Dev note", help="Note de développement pour comprendre le status.")
+
     project_srs = fields.Many2one(
         comodel_name="project.srs",
         string="SRS",
@@ -46,3 +50,11 @@ class ProjectSrsFctContrainte(models.Model):
         string="Référence",
         track_visibility="onchange",
     )
+
+    @api.depends("project_srs", "name")
+    def _compute_identifiant(self):
+        for rec in self:
+            if not isinstance(rec.id, models.NewId):
+                rec.identifiant = f"FCTC-{rec.id}"
+            else:
+                rec.identifiant = ""

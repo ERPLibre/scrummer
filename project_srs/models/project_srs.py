@@ -29,6 +29,8 @@ class ProjectSrs(models.Model):
         string="Exigence non-fonctionnelle",
     )
 
+    lexique = fields.Html(help="Lexique dans le document. TODO faire une structure du mot exact avec définition ou traduction.")
+
     fct_contrainte_ids = fields.One2many(
         comodel_name="project.srs.fct_contrainte",
         inverse_name="project_srs",
@@ -43,25 +45,25 @@ class ProjectSrs(models.Model):
 
     active = fields.Boolean(default=True)
 
-    dans_quel_but = fields.Text(
+    dans_quel_but = fields.Html(
         string="Dans quel but?",
         track_visibility="onchange",
         help="Validation",
     )
 
-    pourquoi_besoin_existe = fields.Text(
+    pourquoi_besoin_existe = fields.Html(
         string="Pourquoi le besoin existe-t-il?",
         track_visibility="onchange",
         help="Validation",
     )
 
-    qui_pourrait_faire_evoluer_besoin = fields.Text(
+    qui_pourrait_faire_evoluer_besoin = fields.Html(
         string="Qu'est-ce qui pourrait faire évoluer le besoin?",
         track_visibility="onchange",
         help="Validation",
     )
 
-    quoi_pourrait_faire_disparaitre = fields.Text(
+    quoi_pourrait_faire_disparaitre = fields.Html(
         string=(
             "Qu'est-ce qui pourrait faire disparaître (remettre en cause) le"
             " besoin?"
@@ -70,18 +72,18 @@ class ProjectSrs(models.Model):
         help="Validation",
     )
 
-    quoi_produit_agit = fields.Text(
+    quoi_produit_agit = fields.Html(
         string="Sur qui, quoi le produit agit-il?",
         track_visibility="onchange",
         help="Validation",
     )
 
-    definition = fields.Text(
+    definition = fields.Html(
         string="Définition",
         track_visibility="onchange",
     )
 
-    qui_rend_service = fields.Text(
+    qui_rend_service = fields.Html(
         string="À qui le produit rend-il service?",
         track_visibility="onchange",
         help="Validation",

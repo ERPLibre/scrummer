@@ -22,8 +22,22 @@ class ProjectSrsExigenceFonctionnelleCategorie(models.Model):
 
     description = fields.Text(track_visibility="onchange")
 
+    key = fields.Char(compute="_compute_key", store=True)
+
+    key_forced = fields.Char()
+
     sequence = fields.Integer(
         string="Séquence",
         track_visibility="onchange",
         default=10,
     )
+
+    @api.depends("name", "key_forced")
+    def _compute_key(self):
+        for rec in self:
+            if rec.key_forced:
+                rec.key = rec.key_forced
+            elif rec.name:
+                rec.key = rec.name[:3].upper()
+            else:
+                rec.key = ""

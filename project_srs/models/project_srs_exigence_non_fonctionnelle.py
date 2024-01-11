@@ -20,7 +20,9 @@ class ProjectSrsExigenceNonFonctionnelle(models.Model):
     active = fields.Boolean(default=True)
 
     identifiant = fields.Char(
-        string="ID",
+        string="Key",
+        compute="_compute_identifiant",
+        store=True,
         track_visibility="onchange",
     )
 
@@ -39,9 +41,20 @@ class ProjectSrsExigenceNonFonctionnelle(models.Model):
         help="État de l'avancement du requis.",
     )
 
+    dev_note = fields.Html(string="Dev note", help="Note de développement pour comprendre le status.")
+
     note = fields.Text(track_visibility="onchange")
 
     srs = fields.Many2one(
         comodel_name="project.srs",
         string="SRS",
     )
+
+    @api.depends("srs", "name")
+    def _compute_identifiant(self):
+        # TODO no need depends, how force compute when finish to create? Move this into create/write
+        for rec in self:
+            if not isinstance(rec.id, models.NewId):
+                rec.identifiant = f"NON-{rec.id}"
+            else:
+                rec.identifiant = ""

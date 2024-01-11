@@ -24,6 +24,10 @@
                         <field name="note" />
                     </group>
                     <group>
+<!--                        <field name="dev_note" groups="base.group_no_one" />-->
+                        <field name="dev_note" />
+                    </group>
+                    <group>
                         <field name="srs" />
                     </group>
                 </sheet>
@@ -141,6 +145,7 @@
                 <field name="identifiant" />
                 <field name="name" />
                 <field name="note" />
+                <field name="dev_note" />
                 <field name="srs" />
             </tree>
         </field>
